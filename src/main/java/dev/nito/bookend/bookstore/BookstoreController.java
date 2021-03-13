@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Collection;
+import java.util.List;
 
 import static org.springframework.http.ResponseEntity.noContent;
 import static org.springframework.http.ResponseEntity.notFound;
@@ -22,13 +24,18 @@ public class BookstoreController {
 
     private final BookstoreService bookstoreService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/book/{id}")
     public ResponseEntity<Book> getBook(@PathVariable Integer id) {
         return bookstoreService.getBook(id).map(ResponseEntity::ok)
                 .orElse(notFound().build());
     }
 
-    @PostMapping
+    @GetMapping("/books")
+    public Collection<Book> getAllBooks() {
+        return bookstoreService.getBooks();
+    }
+
+    @PostMapping("/book")
     public ResponseEntity<Void> createBook(@RequestBody Book book) {
 
         validateRequest(book);
@@ -42,7 +49,7 @@ public class BookstoreController {
         return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/book/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable Integer id) {
         boolean successfulDeletion = bookstoreService.deleteBook(id);
 
@@ -52,7 +59,6 @@ public class BookstoreController {
             return notFound().build();
         }
     }
-
 
     private static void validateRequest(Book book) {
         if (book.getId() != null) {

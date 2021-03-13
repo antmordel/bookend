@@ -3,6 +3,8 @@ package dev.nito.bookend.bookstore;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 import static com.sun.tools.javac.util.Assert.check;
@@ -14,14 +16,18 @@ public class BookstoreService {
 
     private final BookstoreRepository bookstoreRepository;
 
-    public int createBook(Book book) {
-        return bookstoreRepository.saveBook(book);
-    }
-
     public Optional<Book> getBook(Integer id) {
         check(nonNull(id), "book.id cannot be null");
 
         return bookstoreRepository.getBook(id);
+    }
+
+    public Collection<Book> getBooks() {
+        return bookstoreRepository.getBooks();
+    }
+
+    public int createBook(Book book) {
+        return bookstoreRepository.saveBook(book);
     }
 
     public boolean deleteBook(int id) {

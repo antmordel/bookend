@@ -7,7 +7,7 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static lombok.Lombok.checkNotNull;
+import static java.util.Objects.isNull;
 
 @Repository
 public class MapBookstoreRepository implements BookstoreRepository {
@@ -32,7 +32,9 @@ public class MapBookstoreRepository implements BookstoreRepository {
 
     @Override
     public int saveBook(Book book) {
-        checkNotNull(book, "Null values not allowed in Repository");
+        if (isNull(book)) {
+            throw new NullPointerException("Null values not allowed in Repository");
+        }
 
         Integer nextId = idSequence.incrementAndGet();
         store.put(nextId, book.withId(nextId));

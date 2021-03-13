@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.Optional;
 
-import static lombok.Lombok.checkNotNull;
+import static java.util.Objects.isNull;
 
 @Service
 @RequiredArgsConstructor
@@ -15,7 +15,9 @@ public class BookstoreService {
     private final BookstoreRepository bookstoreRepository;
 
     public Optional<Book> getBook(Integer id) {
-        checkNotNull(id, "book.id cannot be null");
+        if (isNull(id)) {
+            throw new NullPointerException("book.id cannot be null");
+        }
 
         return bookstoreRepository.getBook(id);
     }

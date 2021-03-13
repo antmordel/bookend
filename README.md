@@ -5,4 +5,9 @@
 
 Provided a comparison between JVM image build and GraalVM image build.
 
+## Get started
+
+```shell
+./mvnw clean spring-boot:build-image
+```
 

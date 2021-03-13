@@ -15,3 +15,6 @@ package-jvm: ## Packages the JVM version
 build-jvm: ## Builds a JVM image
 	./mvnw -f pom-jvm.xml clean spring-boot:build-image
 
+clean: ## Cleans build
+	./mvnw clean
+

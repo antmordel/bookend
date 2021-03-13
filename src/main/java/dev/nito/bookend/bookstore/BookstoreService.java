@@ -4,11 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 
-import static com.sun.tools.javac.util.Assert.check;
-import static java.util.Objects.nonNull;
+import static lombok.Lombok.checkNotNull;
 
 @Service
 @RequiredArgsConstructor
@@ -17,7 +15,7 @@ public class BookstoreService {
     private final BookstoreRepository bookstoreRepository;
 
     public Optional<Book> getBook(Integer id) {
-        check(nonNull(id), "book.id cannot be null");
+        checkNotNull(id, "book.id cannot be null");
 
         return bookstoreRepository.getBook(id);
     }

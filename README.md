@@ -11,10 +11,19 @@ Provided a comparison between JVM image build and GraalVM image build.
 **Using the JVM** :hourglass_flowing_sand: `2.112 seconds`
 <img src="./docs/assets/docker-jvm.gif" width="1200" alt="Execution for Spring on top of the JVM" />
 
-
 ## Get started
 
+### Create the image locally
 ```shell
 ./mvnw clean spring-boot:build-image
 ```
 
+### Running the just created local image 
+
+```
+docker run -p 8080:8080 bookend-native:0.0.1-SNAPSHOT
+```
+or just
+```
+docker-compose up
+```

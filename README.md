@@ -1,4 +1,4 @@
-# 🚀 Bookend: Spring Native Example app
+# 🚀 Bookend: Spring Native Starter app
 
 - Example Spring Boot REST application using Spring Native
 - Spring Boot, Java 11, Lombok

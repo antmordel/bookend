@@ -34,3 +34,6 @@ build/
 
 ### Jenv ###
 .java-version
+
+### MacOS
+**/.DS_Store

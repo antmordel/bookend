@@ -24,7 +24,4 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build image
-      run: |
-        ./mvnw clean spring-boot:build-image \
-        -Dspring-boot.build-image.imageName=antmordel/${project.artifactId}:${project.version} \
-        -Dspring-boot.build-image.publish=true
+      run: ./mvnw clean spring-boot:build-image -Dspring-boot.build-image.imageName=antmordel/${project.artifactId}:${project.version} -Dspring-boot.build-image.publish=true

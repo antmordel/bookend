@@ -21,7 +21,7 @@ Provided a comparison between JVM image build and GraalVM image build.
 ### Running the just created local image 
 
 ```
-docker run -p 8080:8080 bookend-native:0.0.1-SNAPSHOT
+docker run --rm -p 8080:8080 bookend-native:0.0.1-SNAPSHOT
 ```
 or just
 ```

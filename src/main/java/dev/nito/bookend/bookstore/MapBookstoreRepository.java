@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.util.Objects.isNull;
@@ -12,7 +13,7 @@ import static java.util.Objects.isNull;
 @Repository
 public class MapBookstoreRepository implements BookstoreRepository {
 
-    private final ConcurrentHashMap<Integer, Book> store;
+    private final ConcurrentMap<Integer, Book> store;
     private final AtomicInteger idSequence;
 
     public MapBookstoreRepository() {
